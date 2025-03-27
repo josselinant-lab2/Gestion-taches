@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gestionnaire de tâches</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Gestionnaire de tâches</h1>
+    </header>
+    <main>
+      <!-- Section de création de tâche -->
+      <section id="creation-task">
+        <h2>Créer une tâche</h2>
+        <form id="task-form">
+          <div class="form-group">
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre" required />
+          </div>
+          <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea id="description" name="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="echeance">Date d'échéance :</label>
+            <input type="date" id="echeance" name="echeance" />
+          </div>
+          <div class="form-group">
+            <label for="statut">Statut :</label>
+            <select id="statut" name="statut">
+              <option value="à faire">À faire</option>
+              <option value="en cours">En cours</option>
+              <option value="terminée">Terminée</option>
+              <option value="annulée">Annulée</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="priorite">Priorité :</label>
+            <select id="priorite" name="priorite">
+              <option value="basse">Basse</option>
+              <option value="moyenne">Moyenne</option>
+              <option value="haute">Haute</option>
+              <option value="critique">Critique</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="categorie">Catégorie :</label>
+            <input
+              type="text"
+              id="categorie"
+              name="categorie"
+              placeholder="perso, travail, projet, etc."
+            />
+          </div>
+          <!-- Nouveau champ pour les étiquettes -->
+          <div class="form-group">
+            <label for="etiquettes">Étiquettes :</label>
+            <input
+              type="text"
+              id="etiquettes"
+              name="etiquettes"
+              placeholder="séparez par des virgules"
+            />
+          </div>
+          <button type="submit" class="btn">Ajouter la tâche</button>
+        </form>
+      </section>
+
+      <!-- Section de filtrage et tri -->
+      <section id="filtrage">
+        <h2>Filtrer et trier</h2>
+        <form id="filter-form">
+          <div class="form-group">
+            <label for="filter-statut">Filtrer par statut :</label>
+            <select id="filter-statut" name="statut">
+              <option value="">Tous</option>
+              <option value="à faire">À faire</option>
+              <option value="en cours">En cours</option>
+              <option value="terminée">Terminée</option>
+              <option value="annulée">Annulée</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filter-priorite">Filtrer par priorité :</label>
+            <select id="filter-priorite" name="priorite">
+              <option value="">Tous</option>
+              <option value="basse">Basse</option>
+              <option value="moyenne">Moyenne</option>
+              <option value="haute">Haute</option>
+              <option value="critique">Critique</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filter-categorie">Filtrer par catégorie :</label>
+            <input
+              type="text"
+              id="filter-categorie"
+              name="categorie"
+              placeholder="Catégorie"
+            />
+          </div>
+          <div class="form-group">
+            <label for="filter-etiquette">Filtrer par étiquette :</label>
+            <input
+              type="text"
+              id="filter-etiquette"
+              name="etiquette"
+              placeholder="Étiquette"
+            />
+          </div>
+          <div class="form-group">
+            <label for="filter-avant">Tâches avec échéance avant :</label>
+            <input type="date" id="filter-avant" name="avant" />
+          </div>
+          <div class="form-group">
+            <label for="filter-apres">Tâches avec échéance après :</label>
+            <input type="date" id="filter-apres" name="apres" />
+          </div>
+          <div class="form-group">
+            <label for="filter-q">Recherche (titre/description) :</label>
+            <input type="text" id="filter-q" name="q" placeholder="Recherche" />
+          </div>
+          <button type="submit" class="btn">Filtrer</button>
+        </form>
+        <form id="sort-form">
+          <div class="form-group">
+            <label for="tri">Trier par :</label>
+            <select id="tri" name="tri">
+              <option value="">-- Choisir --</option>
+              <option value="echeance">Date d'échéance</option>
+              <option value="priorite">Priorité</option>
+              <option value="dateCreation">Date de création</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ordre">Ordre :</label>
+            <select id="ordre" name="ordre">
+              <option value="asc">Ascendant</option>
+              <option value="desc">Descendant</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Trier</button>
+        </form>
+      </section>
+
+      <!-- Section d'affichage de la liste des tâches -->
+      <section id="tasks-list">
+        <h2>Liste des tâches</h2>
+        <div id="tasks-container"></div>
+      </section>
+
+      <!-- Modal pour afficher les détails d'une tâche -->
+      <div id="detail-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="modal-task-info"></div>
+
+          <div class="task-actions">
+            <button id="edit-task-btn" class="btn">Modifier la tâche</button>
+            <button id="delete-task-btn" class="btn">Supprimer la tâche</button>
+          </div>
+
+          <!-- Formulaire pour ajouter une sous-tâche -->
+          <div class="sub-section">
+            <h3>Ajouter une sous-tâche</h3>
+            <form id="modal-sous-tache-form">
+              <div class="form-group">
+                <label for="modal-sous-tache-titre">Titre :</label>
+                <input
+                  type="text"
+                  id="modal-sous-tache-titre"
+                  name="titre"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="modal-sous-tache-statut">Statut :</label>
+                <select id="modal-sous-tache-statut" name="statut">
+                  <option value="à faire">À faire</option>
+                  <option value="en cours">En cours</option>
+                  <option value="terminée">Terminée</option>
+                  <option value="annulée">Annulée</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="modal-sous-tache-echeance">Échéance :</label>
+                <input
+                  type="date"
+                  id="modal-sous-tache-echeance"
+                  name="echeance"
+                />
+              </div>
+              <button type="submit" class="btn">Ajouter la sous-tâche</button>
+            </form>
+          </div>
+
+          <!-- Formulaire pour ajouter un commentaire -->
+          <div class="sub-section">
+            <h3>Ajouter un commentaire</h3>
+            <form id="modal-commentaire-form">
+              <div class="form-group">
+                <label for="modal-commentaire-auteur-nom">Nom :</label>
+                <input
+                  type="text"
+                  id="modal-commentaire-auteur-nom"
+                  name="nom"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="modal-commentaire-auteur-prenom">Prénom :</label>
+                <input
+                  type="text"
+                  id="modal-commentaire-auteur-prenom"
+                  name="prenom"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="modal-commentaire-auteur-email">Email :</label>
+                <input
+                  type="email"
+                  id="modal-commentaire-auteur-email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="modal-commentaire-contenu">Contenu :</label>
+                <textarea
+                  id="modal-commentaire-contenu"
+                  name="contenu"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">Ajouter le commentaire</button>
+            </form>
+          </div>
+
+          <!-- Affichage des sous-tâches -->
+          <div class="sub-section">
+            <h3>Sous-tâches</h3>
+            <ul id="modal-sous-taches-list"></ul>
+          </div>
+
+          <!-- Affichage des commentaires -->
+          <div class="sub-section">
+            <h3>Commentaires</h3>
+            <ul id="modal-commentaires-list"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

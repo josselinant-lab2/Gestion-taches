@@ -1,0 +1,184 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Main container */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Section styling */
+section {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  margin-bottom: 10px;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Buttons */
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Card for task detail */
+.card {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Sub-sections */
+.sub-section {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+/* Style des sous-tâches */
+#sous-taches-list li {
+  background-color: #f0f0f0; /* Fond gris clair */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 4px; /* Bords arrondis */
+  padding: 10px; /* Espacement intérieur */
+  margin-bottom: 10px; /* Espacement entre les boîtes */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Légère ombre portée */
+}
+
+/* Style pour chaque tâche affichée dans la liste */
+#tasks-container .task {
+  background-color: #fff; /* Fond blanc */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 5px; /* Bords arrondis */
+  padding: 15px; /* Espacement intérieur */
+  margin-bottom: 15px; /* Espacement entre les boîtes */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Légère ombre portée */
+}
+
+/* Effet de survol pour indiquer que la tâche est cliquable */
+#tasks-container .task:hover {
+  background-color: #f9f9f9; /* Légère variation de fond */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Augmentation de l'ombre portée */
+  cursor: pointer; /* Pointeur pour indiquer l'interactivité */
+  transform: scale(1.02); /* Léger agrandissement */
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.btn-toggle {
+  background: none;
+  border: none;
+  font-size: 1em;
+  color: #007bff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-toggle:hover {
+  text-decoration: underline;
+}
+
+/* Modal container */
+.modal {
+  display: none; /* caché par défaut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* fond semi-transparent */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Close button */
+.modal-content .close {
+  color: #aaa;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content .close:hover {
+  color: #000;
+}
