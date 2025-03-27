@@ -1,0 +1,61 @@
+{
+  "_id": {
+    "$oid": "67e3b552a4364bba39d161c6"
+  },
+  "titre": "Histoires",
+  "description": "Apprendre les évenemtns historiques",
+  "echeance": {
+    "$date": "2025-03-28T00:00:00.000Z"
+  },
+  "statut": "à faire",
+  "priorite": "basse",
+  "etiquettes": [],
+  "dateCreation": {
+    "$date": "2025-03-26T08:05:38.380Z"
+  },
+  "sousTaches": [
+    {
+      "titre": "Pablo escobar",
+      "statut": "à faire",
+      "echeance": {
+        "$date": "2025-03-30T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e550364eb23bd9d9de0ceb"
+      }
+    }
+  ],
+  "commentaires": [
+    {
+      "auteur": {
+        "nom": "Antony",
+        "prenom": "Josselin",
+        "email": "josselinantony16@gmail.com"
+      },
+      "contenu": "Livrer la livraison",
+      "_id": {
+        "$oid": "67e550384eb23bd9d9de0cf1"
+      },
+      "date": {
+        "$date": "2025-03-27T13:18:48.112Z"
+      }
+    },
+    {
+      "auteur": {
+        "nom": "Antony",
+        "prenom": "Camille",
+        "email": "ddgdffdfdfd@ddgdgd.sfr.fr"
+      },
+      "contenu": "dfdvfbb",
+      "_id": {
+        "$oid": "67e550534eb23bd9d9de0d04"
+      },
+      "date": {
+        "$date": "2025-03-27T13:19:15.368Z"
+      }
+    }
+  ],
+  "historiqueModifications": [],
+  "__v": 3,
+  "categorie": ""
+}
